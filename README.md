@@ -37,6 +37,9 @@ $ rails s
 3. Once you add data to history, you will see a search control that will allow you to search your product history by giving id, type and a specific time
 4. Hit "Go" and you see the results below
 
+#### Live Demo
+[object-store.herokuapp.com](http://object-store.herokuapp.com/)
+
 #### To Do
 
 1. Write Jasmine tests for JS
