@@ -1,0 +1,70 @@
+@import "variables";
+
+.container{
+  text-align: center;
+}
+.form-group{
+  margin: 3rem auto;
+  text-align: left;
+  float: none;
+
+  .control-group{
+    margin-top: 1.2rem;
+  }
+
+  .file-columns{
+    padding-left: 1rem;
+  }
+}
+
+.search-form, .results{
+  float: none;
+  margin: auto;
+}
+
+.results{
+  table{
+    width: 100%;
+    margin-bottom: 3rem;
+
+    tr{
+      border-bottom: 1px solid #d8d8d8;
+    }
+
+    th{
+      text-align: center;
+    }
+
+    td{
+      padding: 0.75rem 0;
+      font-size: 0.8em;
+    }
+
+    td.id{
+      width: 7%;
+    }
+    td.type, td.ts{
+      width: 12%
+    }
+    td.pts{
+      width: 25%;
+    }
+    td.attr{
+      width: 44%;
+      text-align: left;
+    }
+  }
+}
+
+//flatpickr overrides
+.flatpickr-day.selected, .flatpickr-day.selected:hover{
+  background: $brand-color;
+  border-color: $brand-color;
+}
+.flatpickr-day.today{
+  border-color: $secondary-color;
+}
+.flatpickr-day.today:hover {
+  border-color: $secondary-color;
+  background: $secondary-color;
+}

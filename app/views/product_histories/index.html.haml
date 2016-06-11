@@ -1,0 +1,78 @@
+- content_for :head_css do
+  = stylesheet_link_tag "flatpickr.min", "product_histories"
+
+- content_for :page_js do
+  = javascript_include_tag "moment.min", "flatpickr.min", "product_histories"
+
+.container{"ng-app" => "ProductHistorApp", "ng-controller" => "ProductHistoryController as pc"}
+  %h3 Product Histories
+  %form.form-group.col-xs-12.col-md-6{name: "productHistorUploadForm", id: "productHistorUploadForm", novalidate: true, "ng-submit" => "pc.storeHistory('#{form_authenticity_token}')"}
+    .control-group
+      .control-label Product File (CSV)
+      .controls
+        %input.form-control{type: "file", name: "csvFile", id: "csvFile", required: true, "file-upload" => "pc.csvFile", accept: ".csv"}
+    .control-group.ng-cloak{"ng-if" => "pc.fileHeaders && pc.fileHeaders.length > 0", "ng-cloak" => "true"}
+      .control-label CSV Columns
+      .controls
+        %div.file-columns{"ng-repeat" => "col in pc.fileHeaders | filter: pc.headerCountLimit(this, $index)"}
+          %input{type: "hidden", name: "hidMessage{{$index}}", value: "", "ng-required" => "col != pc.acceptedColumns[$index]" }
+          %span{"ng-class" => "{highlight: col != pc.acceptedColumns[$index]}"}
+            {{col}}
+          %ng-message{"ng-if" => "col != pc.acceptedColumns[$index]"}
+            \- Invalid Column in the CSV file. Should be
+            %b ({{pc.acceptedColumns[$index]}})
+    .control-group.ng-cloak{"ng-if" => "pc.invalidFile != null && pc.invalidFile == true", "ng-cloak" => "true"}
+      .controls
+        .error
+          Please check if the uploaded a CSV file is valid
+    .control-group
+      .controls
+        %button.btn.btn-success
+          Add History
+        %a.pull-right{href: "/sample_csv_data.csv", target: "_blank"} Sample CSV File
+  .search-form.col-xs-12.col-md-10.ng-cloak{"ng-show" => "pc.products && pc.products.length > 0", "ng-cloak" => "true"}
+    %form.form-group.col-xs-12.col-md-8{name: "productHistorySearchForm", id: "productHistorySearchForm", novalidate: true, "ng-submit" => "pc.searchProduct()"}
+      .control-group.text-center
+        .controls
+          %label Get State of Product of type
+          %select{"ng-model" => "pc.product.type", name: "type", "ng-options" => "product_type for product_type in pc.product_types", required: true}
+            %option{value: ""} Select type
+          %label with id
+          %select{"ng-model" => "pc.product.id", name: "id", "ng-options" => "product_id for product_id in pc.product_ids", required: true}
+            %option{value: ""} Select product id
+          %br
+          %label at time
+          %input#searchDateTime.flatpickr-input{type: "text", name: "datetime", "data-enabletime" => "true"}
+          %span UTC
+      .control-group.ng-cloak{"ng-if" => "productHistorySearchForm.$submitted && pc.searchFormInvalid", "ng-cloak" => "true"}
+        .controls
+          .error
+            Please provide all the values.
+      .control-group.text-center
+        %button.btn.btn-success Go
+  .results.col-xs-12.col-md-10.ng-cloak{"ng-if" => "pc.results && pc.results.length > 0", "ng-cloak" => "true"}
+    %table
+      %thead
+        %tr
+          %th
+            Product Id
+          %th
+            Product Type
+          %th
+            Time Stamp
+          %th
+            Date and Time
+          %th
+            Attributes
+      %tbody
+        %tr{"ng-repeat" => "product in pc.results"}
+          %td.id
+            {{product.id}}
+          %td.type
+            {{product.type}}
+          %td.ts
+            {{product.timestamp}}
+          %td.pts
+            {{product.pretty_datetime}}
+          %td.attr
+            {{product.attributes}}

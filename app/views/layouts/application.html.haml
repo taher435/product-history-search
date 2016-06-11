@@ -1,0 +1,25 @@
+!!! 5
+%html{"lang" => "en"}
+%head
+  %title
+    TradeGecko - Product History Test by Taher Dhilawala
+
+  - csrf_meta_tags
+  %meta{name: "author", content: "Taher Dhilawala"}
+  %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+  = yield :page_meta
+
+  %link{rel: "shortcut icon", type: "image/x-image", href: "//resources.tradegecko.com/hs-fs/hub/407937/file-2397623186-ico/site/images/tools/favicon.ico?t=1465466309242"}
+  %link{href: "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel: "stylesheet"}
+  %link{href: "/assets/platform.css?v=1.0", rel: "stylesheet", type: "text/css"}
+  = yield :head_css
+
+%body
+  = yield
+
+  %script{src: "//code.jquery.com/jquery-2.2.4.min.js", type: "text/javascript", integrity: "sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin: "anonymous"}
+  %script{src: "//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js", type: "text/javascript"}
+  %script{src: "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", type: "text/javascript"}
+  %script{src: "/assets/moment.min.js", type: "text/javascript"}
+
+  = yield :page_js

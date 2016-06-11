@@ -1,0 +1,43 @@
+//import external resources
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,400italic,500,500italic,600,600italic,700,700italic,800,800italic);
+
+@import "variables";
+
+//Typography
+html, body{
+  font-family: $font-family;
+  color: $font-color;
+  font-size: $root-font-size;
+}
+/* using "Perfect Forth" scale from http://type-scale.com/ */
+h3{
+  font-size: 1.777em;
+}
+h4{
+  font-size: 1.333em;
+}
+p{
+  font-size: 1em;
+}
+
+// bootstrap overrides
+.btn-success, .btn-success:hover, .btn-success:focus{
+  background-color: $brand-color;
+  border-color: $brand-color;
+  color: #ffffff;
+}
+
+// helper classes
+.highlight{
+  background-color: yellow;
+}
+.error, ng-message{
+  color: $accent-color-1;
+  font-size: 0.75em;
+}
+.text-center{
+  text-align: center;
+}
+.ng-cloak{
+  display: none;
+}

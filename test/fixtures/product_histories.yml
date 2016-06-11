@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_type: MyString
+  unix_ts: 
+  attribute_changes: MyText
+
+two:
+  product_type: MyString
+  unix_ts: 
+  attribute_changes: MyText
