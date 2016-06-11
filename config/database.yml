@@ -26,7 +26,7 @@ development:
   host: localhost
   database: object_store_development
   username: postgres
-  password: dhigreat
+  password: <your password>
   port: 5432
 
   # The specified database role being used to connect to postgres.
@@ -64,7 +64,7 @@ test:
   host: localhost
   database: object_store_test
   username: postgres
-  password: dhigreat
+  password: <your password>
   port: 5432
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -88,6 +88,8 @@ test:
 #
 production:
   <<: *default
-  database: object-store_production
-  username: object-store
-  password: <%= ENV['OBJECT-STORE_DATABASE_PASSWORD'] %>
+  host: ec2-54-163-248-14.compute-1.amazonaws.com
+  database: dar3bders7bl6k
+  username: kdsvlupjhaigcw
+  password: Yc3PSQ0kF_ifWd88RfIC7OzzzJ
+  port: 5432
